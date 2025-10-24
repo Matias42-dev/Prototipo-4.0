@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Asistencia x Materia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>App Asistencia x Materia</h1>
+  </header>
+
+  <main id="loginView">
+    <div class="card">
+      <h2>Iniciar sesión</h2>
+      <label for="role">Seleccionar rol:</label>
+      <select id="role">
+        <option value="alumno">Alumno</option>
+        <option value="docente">Docente</option>
+        <option value="admin">Administración</option>
+      </select>
+
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" placeholder="Ingrese usuario">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" placeholder="Ingrese contraseña">
+
+      <button id="loginBtn">Ingresar</button>
+      <p id="loginError" style="color:red; display:none;">Usuario o contraseña incorrectos</p>
+    </div>
+  </main>
+
+  <!-- Paneles -->
+  <main id="studentView" class="hidden">
+    <h2>Panel de Alumno</h2>
+    <p>Escanee el QR de asistencia o ingrese el código manualmente.</p>
+    <div id="qrScanner" class="scanner"></div>
+    <button id="startScan">Iniciar escaneo</button>
+    <input type="text" id="manualCode" placeholder="Código manual">
+    <button id="registerAttendance">Registrar asistencia</button>
+    <button id="logoutStudent" class="logout">Cerrar sesión</button>
+  </main>
+
+  <main id="teacherView" class="hidden">
+    <h2>Panel Docente</h2>
+    <p>Genere el código QR para la clase actual:</p>
+    <div id="qrCode"></div>
+    <button id="generateQR">Generar nuevo QR</button>
+    <button id="logoutTeacher" class="logout">Cerrar sesión</button>
+  </main>
+
+  <main id="adminView" class="hidden">
+    <h2>Panel de Administración</h2>
+    <p>Notificaciones y control de asistencia de los alumnos.</p>
+    <ul id="attendanceList"></ul>
+    <button id="logoutAdmin" class="logout">Cerrar sesión</button>
+  </main>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
